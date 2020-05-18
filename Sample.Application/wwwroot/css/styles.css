@@ -1,0 +1,87 @@
+﻿fieldset {
+    border: 1px #000 dashed;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+legend {
+    width: auto;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.demo-section label {
+    display: block;
+    margin: 15px 0 5px 0;
+}
+
+#get {
+    float: right;
+    margin: 25px auto 0;
+}
+
+.k-textbox-container {
+    padding-top: 0;
+}
+
+.demo-section {
+    text-align: center;
+}
+
+.fieldlist {
+    margin: 0 0 -1em;
+    padding: 0;
+}
+
+    .fieldlist li {
+        list-style: none;
+        padding-bottom: 1em;
+    }
+
+#cap {
+    width: 242px;
+    height: 225px;
+    margin: 20px auto;
+    background-image: url('@Url.Content("~/shared/web/dropdownlist/cap.png")');
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.black-cap {
+    background-position: 0 0;
+}
+
+.grey-cap {
+    background-position: 0 -225px;
+}
+
+.orange-cap {
+    background-position: 0 -450px;
+}
+
+.k-detail-cell .k-tabstrip .k-content {
+    padding: 0.2em;
+}
+
+.employee-details ul {
+    list-style: none;
+    font-style: italic;
+    margin: 15px;
+    padding: 0;
+}
+
+    .employee-details ul li {
+        margin: 0;
+        line-height: 1.7em;
+    }
+
+.employee-details label {
+    display: inline-block;
+    width: 90px;
+    padding-right: 10px;
+    text-align: right;
+    font-style: normal;
+    font-weight: bold;
+}

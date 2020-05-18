@@ -32,6 +32,12 @@ namespace Sample.Application.Controllers
             return View();
         }
 
+        public IActionResult Details(int id)
+        {
+            var model = _service.GetAll().Where(x => x.Id == id).FirstOrDefault();
+            return PartialView("_details", model);
+        }
+
         public ActionResult Record_Read([DataSourceRequest]DataSourceRequest request)
         {
             var source = _service.GetAll();

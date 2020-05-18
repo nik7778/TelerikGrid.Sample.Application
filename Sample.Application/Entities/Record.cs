@@ -7,6 +7,7 @@ namespace Sample.Application.Entities
 {
     public class Record
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public string Day { get; set; }
         public string Time { get; set; }

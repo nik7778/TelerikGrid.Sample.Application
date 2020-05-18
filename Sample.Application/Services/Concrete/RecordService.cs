@@ -23,15 +23,16 @@ namespace Sample.Application.Services
                     {
                         list.Add(new Record
                         {
-                            Date = Convert.ToDateTime(worksheet.Cells[row, 1].Value.ToString().Trim()),
-                            Day = worksheet.Cells[row, 2].Value.ToString().Trim(),
-                            Time = worksheet.Cells[row, 3].Value.ToString().Trim(),
-                            Client = worksheet.Cells[row, 4].Value.ToString().Trim(),
-                            Duration = Convert.ToDecimal(worksheet.Cells[row, 5].Value.ToString().Trim()),
-                            DNB = worksheet.Cells[row, 6].Value != null ? Convert.ToBoolean(worksheet.Cells[row, 6].Value.ToString().Trim()) : false,
-                            Status = worksheet.Cells[row, 7].Value != null ? worksheet.Cells[row, 7].Value.ToString().Trim() : string.Empty,
-                            Memo = worksheet.Cells[row, 8].Value.ToString().Trim(),
-                            Staff = worksheet.Cells[row, 9].Value.ToString().Trim()
+                            Id = Convert.ToInt32(worksheet.Cells[row, 1].Value.ToString().Trim()),
+                            Date = Convert.ToDateTime(worksheet.Cells[row, 2].Value.ToString().Trim()),
+                            Day = worksheet.Cells[row, 3].Value.ToString().Trim(),
+                            Time = worksheet.Cells[row, 4].Value.ToString().Trim(),
+                            Client = worksheet.Cells[row, 5].Value.ToString().Trim(),
+                            Duration = Convert.ToDecimal(worksheet.Cells[row, 6].Value.ToString().Trim()),
+                            DNB = worksheet.Cells[row, 7].Value != null ? Convert.ToBoolean(worksheet.Cells[row, 7].Value.ToString().Trim()) : false,
+                            Status = worksheet.Cells[row, 8].Value != null ? worksheet.Cells[row, 8].Value.ToString().Trim() : string.Empty,
+                            Memo = worksheet.Cells[row, 9].Value.ToString().Trim(),
+                            Staff = worksheet.Cells[row, 10].Value.ToString().Trim()
                         });
                     }
                 }
