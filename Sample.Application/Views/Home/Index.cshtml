@@ -96,7 +96,7 @@
                 .Update(read => read.Action("Record_Update", "Home"))
                 //.Destroy(read => read.Action("Record_Destroy", "Home"))
     )
-    //.Events(events => events.Change("test()"))
+    .Events(events => events.Change("showDetails"))
     .ToolBar(toolbar =>
     {
         toolbar.Search();
@@ -117,47 +117,53 @@
         columns.Bound(p => p.Staff).Width(65);
         //columns.Command(command => command.Destroy()).Width(80);
     })
-    .Editable(editable => editable.Mode(GridEditMode.InCell))
+    .Editable(editable => editable.Enabled(false))
     .Pageable(pager => pager.Refresh(true))
     .Navigatable()
     .Sortable()
     .Resizable(resize => resize.Columns(true))
     .Filterable(x => x.Enabled(true))
     .Groupable(x => x.Enabled(true))
+    .Selectable(selectable => selectable.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Row))
     .Scrollable()
-    .ClientDetailTemplateId("template")
+    //.ClientDetailTemplateId("template")
     .HtmlAttributes(new { style = "height:1200px;" })
 )
 
-
-<label style="font-weight:700;display:block;padding-top:40px;">Grid Settings:</label>
-<div style="display:inline-block;padding:10px 0;">
-    <ul class="fieldlist" style="display:inline-block">
-        <li>
-            @(Html.Kendo().CheckBox()
-            .Name("eq2")
-            .Checked(true).Label("Editable mode"))
-        </li>
-        <li>
-            @(Html.Kendo().CheckBox()
-            .Name("eq3")
-            .Checked(true).Label("Filterable mode"))
-        </li>
-    </ul>
-    <ul class="fieldlist" style="display:inline-block">
-        <li>
-            @(Html.Kendo().CheckBox()
-            .Name("eq4")
-            .Checked(true).Label("Groupable mode"))
-        </li>
-        <li>
-            @(Html.Kendo().CheckBox()
-            .Name("eq5")
-            .Checked(true).Label("Show toolbar buttons"))
-        </li>
-    </ul>
+<div class="row">
+    <div class="col-md-6">
+        <label style="font-weight:700;display:block;padding-top:40px;">Grid Settings:</label>
+        <div style="display:inline-block;padding:10px 0;">
+            <ul class="fieldlist" style="display:inline-block">
+                <li>
+                    @(Html.Kendo().CheckBox()
+                    .Name("eq2")
+                    .Checked(false).Label("Editable mode"))
+                </li>
+                <li>
+                    @(Html.Kendo().CheckBox()
+                    .Name("eq3")
+                    .Checked(true).Label("Filterable mode"))
+                </li>
+            </ul>
+            <ul class="fieldlist" style="display:inline-block">
+                <li>
+                    @(Html.Kendo().CheckBox()
+                    .Name("eq4")
+                    .Checked(true).Label("Groupable mode"))
+                </li>
+                <li>
+                    @(Html.Kendo().CheckBox()
+                    .Name("eq5")
+                    .Checked(true).Label("Show toolbar buttons"))
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div id="rowDetails"></div>
+    </div>
 </div>
-<div style="display:inline-block;padding:10px 0;" id="rowDetails"></div>
 
 <script id="GridToolbarTemplate" type="text/x-kendo-template">
     <div class="refreshBtnContainer">
@@ -190,4 +196,24 @@
 }).ToClientTemplate())
 </script>
 
-<script src="~/js/script.js"></script>
+<script src="~/js/script.js?v=1.0.0.0.0.4"></script>
+
+<script type="text/javascript">
+showDetails = function (e) {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).children().first().text();
+        });
+
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Details", "Home")',
+            data: { id: selected[0] },
+            dataType: 'html',
+            success: function (data) {
+                $('#rowDetails').html(data);
+            },
+            error: function (ex) {
+            }
+        });
+    };
+</script>

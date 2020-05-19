@@ -199,25 +199,6 @@ function error_handler(e) {
     }
 }
 
-showDetails = function (e) {
-    $.ajax({
-        type: 'GET',
-        url: '@Url.Action("Details")',
-        data: { id: e.row.firstChild.innerText },
-        dataType: 'html',
-        success: function (data) {
-            $('#rowDetails').html(data);
-            $('#rowDetails').css('display', '');
-        },
-        error: function (ex) {
-        }
-    });
-};
-
-$("#hideDetails").on("click", function () {
-    $('#rowDetails').css('display', 'none');
-});
-
 //$("#SearchBox").on("change", function () {
 //    var enter = $("#SearchBox").val();
 //    if (enter.length >= 3) {
