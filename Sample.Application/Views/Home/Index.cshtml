@@ -89,7 +89,7 @@
     .DataSource(dataSource => dataSource
                 .Ajax()
                 .Batch(true)
-                .PageSize(20)
+                .PageSize(10)
                 .ServerOperation(false)
                 .Events(events => events.Error("error_handler"))
                 .Read(read => read.Action("Record_Read", "Home"))
@@ -117,7 +117,7 @@
         columns.Bound(p => p.Staff).Width(65);
         //columns.Command(command => command.Destroy()).Width(80);
     })
-    .Editable(editable => editable.Enabled(false))
+    .Editable(editable => editable.Enabled(false))    
     .Pageable(pager => pager.Refresh(true))
     .Navigatable()
     .Sortable()
@@ -127,7 +127,7 @@
     .Selectable(selectable => selectable.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Row))
     .Scrollable()
     //.ClientDetailTemplateId("template")
-    .HtmlAttributes(new { style = "height:1200px;" })
+    .HtmlAttributes(new { style = "height:700px;" })
 )
 
 <div class="row">
@@ -199,21 +199,22 @@
 <script src="~/js/script.js?v=1.0.0.0.0.4"></script>
 
 <script type="text/javascript">
-showDetails = function (e) {
-        var selected = $.map(this.select(), function (item) {
-            return $(item).children().first().text();
-        });
 
-        $.ajax({
-            type: 'GET',
-            url: '@Url.Action("Details", "Home")',
-            data: { id: selected[0] },
-            dataType: 'html',
-            success: function (data) {
-                $('#rowDetails').html(data);
-            },
-            error: function (ex) {
-            }
-        });
-    };
+showDetails = function (e) {
+    var selected = $.map(this.select(), function (item) {
+        return $(item).children().first().text();
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("Details", "Home")',
+        data: { id: selected[0] },
+        dataType: 'html',
+        success: function (data) {
+            $('#rowDetails').html(data);
+        },
+        error: function (ex) {
+        }
+    });
+};
 </script>

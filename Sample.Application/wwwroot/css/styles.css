@@ -93,3 +93,26 @@ legend {
     padding: 10px 0;
     margin-top:30px;    
 }
+
+.k-grid-search {
+    float: left;
+}
+
+.k-grid-save-changes {
+    float: right;    
+}
+
+.k-grid-cancel-changes {
+    float: right;
+}
+
+.k-grid-pdf {
+    float: right;
+}
+
+.k-textbox .k-icon {
+    top: 50%;
+    margin: -8px -14px 0;
+}
+
+
