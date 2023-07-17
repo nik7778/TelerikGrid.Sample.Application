@@ -1,4 +1,4 @@
-# LS.Dialer.Manager
+# TelerikGrid.Sample.Application
 
-Telerik ASP.NET Core LS sample app demonstrating the Grid control
+Telerik ASP.NET Core sample app demonstrating the Grid control
 
